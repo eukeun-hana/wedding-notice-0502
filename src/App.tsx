@@ -10,6 +10,7 @@ import { ShareButton } from "./component/shareButton"
 import { BGM } from "./component/bgm"
 import { useEffect } from "react"
 
+
 function App() {
   useEffect(() => {
     window.scrollTo(0, 0)

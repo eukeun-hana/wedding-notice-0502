@@ -139,6 +139,7 @@ export const Invitation = () => {
       >
         연락하기
       </Button>
+      <div className="break" />
       {/* =========================
           ✅ 새로 추가된 마음 전하실 곳 버튼
       ========================== */}
@@ -151,7 +152,7 @@ export const Invitation = () => {
               <div className="title-group">
                 <div className="title">마음 전하실 곳</div>
                 <div className="subtitle">
-                  계좌번호를 눌러 복사할 수 있습니다.
+                  계좌번호를 복사하여 마음을 전하실 수 있습니다.
                 </div>
               </div>
             ),
@@ -163,14 +164,25 @@ export const Invitation = () => {
                     ({ relation, name, bank, account }) => (
                       <Fragment key={relation}>
                         <div className="relation">{relation}</div>
+
+                        {/* 이름 */}
                         <div>{name}</div>
 
-                        {/* 계좌 클릭하면 복사 */}
-                        <div
-                          style={{ cursor: "pointer" }}
-                          onClick={() => copyAccount(account)}
-                        >
-                          {bank} {account}
+                        {/* 계좌 + 복사 */}
+                        <div>
+                          <span>{bank} {account}</span>
+
+                          <Button
+                            buttonStyle="style2"
+                            style={{
+                              marginLeft: "0.5rem",
+                              fontSize: "0.7rem",
+                              padding: "0.2rem 0.4rem",
+                            }}
+                            onClick={() => copyAccount(account)}
+                          >
+                            복사
+                          </Button>
                         </div>
                       </Fragment>
                     ),
@@ -183,13 +195,23 @@ export const Invitation = () => {
                     ({ relation, name, bank, account }) => (
                       <Fragment key={relation}>
                         <div className="relation">{relation}</div>
+
                         <div>{name}</div>
 
-                        <div
-                          style={{ cursor: "pointer" }}
-                          onClick={() => copyAccount(account)}
-                        >
-                          {bank} {account}
+                        <div>
+                          <span>{bank} {account}</span>
+
+                          <Button
+                            buttonStyle="style2"
+                            style={{
+                              marginLeft: "0.5rem",
+                              fontSize: "0.7rem",
+                              padding: "0.2rem 0.4rem",
+                            }}
+                            onClick={() => copyAccount(account)}
+                          >
+                            복사
+                          </Button>
                         </div>
                       </Fragment>
                     ),

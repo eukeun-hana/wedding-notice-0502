@@ -23,7 +23,7 @@ export const Invitation = () => {
 
   const copyAccount = (account: string) => {
     navigator.clipboard.writeText(account)
-    alert("계좌번호가 복사되었습니다.")
+    alert(`계좌번호가 복사되었습니다.\n${account}`)
   }
   return (
     <LazyDiv className="card invitation">

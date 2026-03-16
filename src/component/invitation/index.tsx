@@ -26,15 +26,18 @@ export const Invitation = () => {
     alert(`계좌번호가 복사되었습니다.\n${account}`)
   }
 
-  // ⭐ 계좌 모달 열기 (아코디언 방식)
+  // ⭐ 계좌 모달 열기 함수 추가
   const openAccountModal = () => {
     openModal({
-      className: "account-modal",
+      className: "contact-modal", // 기존 CSS 그대로 사용
       closeOnClickBackground: true,
 
       header: (
         <div className="title-group">
           <div className="title">마음 전하실 곳</div>
+          <div className="subtitle">
+            계좌번호를 복사하여 마음을 전하실 수 있습니다.
+          </div>
         </div>
       ),
 
@@ -73,6 +76,24 @@ export const Invitation = () => {
                       복사
                     </Button>
                   </div>
+                </Fragment>
+              ),
+            )}
+          </div>
+        </>
+      ),
+
+      footer: (
+        <Button
+          buttonStyle="style2"
+          className="bg-light-grey-color text-dark-color"
+          onClick={closeModal}
+        >
+          닫기
+        </Button>
+      ),
+    })
+  }
                 
   return (
     <LazyDiv className="card invitation">

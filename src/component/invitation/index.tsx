@@ -59,104 +59,65 @@ export const Invitation = () => {
 
       <div className="break" />
 
-      <Button
+       <Button
         onClick={() => {
           openModal({
             className: "contact-modal",
             closeOnClickBackground: true,
             header: (
               <div className="title-group">
-                <div className="title">마음 전하실 곳</div> {/* ✅ 문구 변경 */}
+                <div className="title">연락하기</div>
                 <div className="subtitle">
-                  계좌번호를 눌러 복사할 수 있습니다.
+                  전화, 문자메세지로 축하 인사를 전해보세요.
                 </div>
               </div>
             ),
             content: (
               <>
-                {/* ---------------- 신랑측 ---------------- */}
                 <div className="contact-info">
-                  {GROOM_INFO.map(
-                    ({
-                      relation,
-                      name,
-                      phone,
-                      bank,
-                      account, // ✅ 계좌 정보 사용
-                    }) => (
+                  {GROOM_INFO.filter(({ phone }) => !!phone).map(
+                    ({ relation, name, phone }) => (
                       <Fragment key={relation}>
-                        {/* 관계 */}
                         <div className="relation">{relation}</div>
-
-                        {/* 이름 */}
                         <div>{name}</div>
-
                         <div>
-                          {/* 아이콘 줄 */}
                           <PhoneIcon
                             className="flip icon"
                             onClick={() => {
                               window.open(`tel:${phone}`, "_self")
                             }}
                           />
-                        
                           <EnvelopeIcon
                             className="icon"
                             onClick={() => {
                               window.open(`sms:${phone}`, "_self")
                             }}
                           />
-                        
-                          {/* 계좌 줄 */}
-                          <div
-                            onClick={() => copyAccount(account)}
-                            style={{ cursor: "pointer", fontSize: "0.8rem", opacity: 0.7 }}
-                          >
-                            {bank} {account}
-                          </div>
                         </div>
                       </Fragment>
                     ),
                   )}
                 </div>
 
-                {/* ---------------- 신부측 ---------------- */}
                 <div className="contact-info">
-                  {BRIDE_INFO.map(
-                    ({
-                      relation,
-                      name,
-                      phone,
-                      bank,
-                      account, // ✅ 계좌 정보 사용
-                    }) => (
+                  {BRIDE_INFO.filter(({ phone }) => !!phone).map(
+                    ({ relation, name, phone }) => (
                       <Fragment key={relation}>
                         <div className="relation">{relation}</div>
-
                         <div>{name}</div>
-                       <div>
-                          {/* 아이콘 줄 */}
+                        <div>
                           <PhoneIcon
                             className="flip icon"
                             onClick={() => {
                               window.open(`tel:${phone}`, "_self")
                             }}
                           />
-                        
                           <EnvelopeIcon
                             className="icon"
                             onClick={() => {
                               window.open(`sms:${phone}`, "_self")
                             }}
                           />
-                        
-                          {/* 계좌 줄 */}
-                          <div
-                            onClick={() => copyAccount(account)}
-                            style={{ cursor: "pointer", fontSize: "0.8rem", opacity: 0.7 }}
-                          >
-                            {bank} {account}
-                          </div>
                         </div>
                       </Fragment>
                     ),
@@ -178,7 +139,78 @@ export const Invitation = () => {
       >
         연락하기
       </Button>
+      {/* =========================
+          ✅ 새로 추가된 마음 전하실 곳 버튼
+      ========================== */}
+      <Button
+        onClick={() => {
+          openModal({
+            className: "contact-modal",
+            closeOnClickBackground: true,
+            header: (
+              <div className="title-group">
+                <div className="title">마음 전하실 곳</div>
+                <div className="subtitle">
+                  계좌번호를 눌러 복사할 수 있습니다.
+                </div>
+              </div>
+            ),
+            content: (
+              <>
+                {/* 신랑측 */}
+                <div className="contact-info">
+                  {GROOM_INFO.map(
+                    ({ relation, name, bank, account }) => (
+                      <Fragment key={relation}>
+                        <div className="relation">{relation}</div>
+                        <div>{name}</div>
 
+                        {/* 계좌 클릭하면 복사 */}
+                        <div
+                          style={{ cursor: "pointer" }}
+                          onClick={() => copyAccount(account)}
+                        >
+                          {bank} {account}
+                        </div>
+                      </Fragment>
+                    ),
+                  )}
+                </div>
+
+                {/* 신부측 */}
+                <div className="contact-info">
+                  {BRIDE_INFO.map(
+                    ({ relation, name, bank, account }) => (
+                      <Fragment key={relation}>
+                        <div className="relation">{relation}</div>
+                        <div>{name}</div>
+
+                        <div
+                          style={{ cursor: "pointer" }}
+                          onClick={() => copyAccount(account)}
+                        >
+                          {bank} {account}
+                        </div>
+                      </Fragment>
+                    ),
+                  )}
+                </div>
+              </>
+            ),
+            footer: (
+              <Button
+                buttonStyle="style2"
+                className="bg-light-grey-color text-dark-color"
+                onClick={closeModal}
+              >
+                닫기
+              </Button>
+            ),
+          })
+        }}
+      >
+        마음 전하실 곳
+      </Button>
       <div className="break" />
     </LazyDiv>
   )

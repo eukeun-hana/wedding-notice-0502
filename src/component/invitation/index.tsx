@@ -123,12 +123,10 @@ export const Invitation = () => {
                               window.open(`sms:${phone}`, "_self")
                             }}
                           />
-                          {account && (
-                            <CopyIcon
+                           <CopyIcon
                               className="icon"
                               onClick={() => copyAccount(account)}
                             />
-                          )}
                         </div>
                       </Fragment>
                     ),

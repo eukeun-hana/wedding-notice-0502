@@ -25,6 +25,76 @@ export const Invitation = () => {
     navigator.clipboard.writeText(account)
     alert(`계좌번호가 복사되었습니다.\n${account}`)
   }
+
+  // ⭐ 계좌 모달 열기 (아코디언 방식)
+  const openAccountModal = () => {
+    openModal({
+      className: "account-modal",
+      closeOnClickBackground: true,
+
+      header: (
+        <div className="title-group">
+          <div className="title">마음 전하실 곳</div>
+        </div>
+      ),
+
+      content: (
+        <div className="account-list">
+
+          {/* ⭐ 신랑측 계좌 */}
+          <details className="account-item">
+            <summary>신랑측 계좌</summary>
+
+            {GROOM_INFO.filter(({ account }) => account).map(
+              ({ name, account }) => (
+                <div className="account-row" key={account}>
+                  <div className="account-text">{account}</div>
+
+                  <Button
+                    className="copy-button"
+                    onClick={() => copyAccount(account)}
+                  >
+                    복사
+                  </Button>
+                </div>
+              )
+            )}
+          </details>
+
+          {/* ⭐ 신부측 계좌 */}
+          <details className="account-item">
+            <summary>신부측 계좌</summary>
+
+            {BRIDE_INFO.filter(({ account }) => account).map(
+              ({ name, account }) => (
+                <div className="account-row" key={account}>
+                  <div className="account-text">{account}</div>
+
+                  <Button
+                    className="copy-button"
+                    onClick={() => copyAccount(account)}
+                  >
+                    복사
+                  </Button>
+                </div>
+              )
+            )}
+          </details>
+
+        </div>
+      ),
+
+      footer: (
+        <Button
+          buttonStyle="style2"
+          className="bg-light-grey-color text-dark-color"
+          onClick={closeModal}
+        >
+          닫기
+        </Button>
+      ),
+    })
+  }
   return (
     <LazyDiv className="card invitation">
       <h2 className="english">Notice</h2>
@@ -91,14 +161,7 @@ export const Invitation = () => {
                             onClick={() => {
                               window.open(`sms:${phone}`, "_self")
                             }}
-                          />
-                           
-                           <CopyIcon
-                              className="icon"
-                              onClick={() => copyAccount(account)}
-                            />
-                           
-                         
+                          />   
                         </div>
                       </Fragment>
                     ),
@@ -123,10 +186,6 @@ export const Invitation = () => {
                               window.open(`sms:${phone}`, "_self")
                             }}
                           />
-                           <CopyIcon
-                              className="icon"
-                              onClick={() => copyAccount(account)}
-                            />
                         </div>
                       </Fragment>
                     ),
@@ -149,6 +208,10 @@ export const Invitation = () => {
         연락하기
       </Button>
       <div className="break" />
+       {/* ⭐ 계좌 모달 버튼 추가 */}
+      <Button onClick={openAccountModal}>
+        마음 전하실 곳
+      </Button>
     </LazyDiv>
   )
 }

@@ -176,6 +176,7 @@ export const Invitation = () => {
                       </div>
                     ),
                   )}
+                  <div className="break" />
                   {BRIDE_INFO.filter(({ account }) => !!account).map(
                     ({ relation, name, account }) => (
                       <div className="account-info" key={relation}>

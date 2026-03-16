@@ -86,6 +86,12 @@ export const Invitation = () => {
                               window.open(`sms:${phone}`, "_self")
                             }}
                           />
+                           {account && (
+                            <CopyIcon
+                              className="icon"
+                              onClick={() => copyAccount(account)}
+                            />
+                          )}
                         </div>
                       </Fragment>
                     ),
@@ -110,6 +116,12 @@ export const Invitation = () => {
                               window.open(`sms:${phone}`, "_self")
                             }}
                           />
+                          {account && (
+                            <CopyIcon
+                              className="icon"
+                              onClick={() => copyAccount(account)}
+                            />
+                          )}
                         </div>
                       </Fragment>
                     ),

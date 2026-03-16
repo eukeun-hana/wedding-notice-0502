@@ -79,7 +79,7 @@ export const Invitation = () => {
                       <Fragment key={relation}>
                         <div className="relation">{relation}</div>
                         <div>{name}</div>
-                        <div>
+                        <div className="icon-group">
                           <PhoneIcon
                             className="flip icon"
                             onClick={() => {
@@ -110,7 +110,7 @@ export const Invitation = () => {
                       <Fragment key={relation}>
                         <div className="relation">{relation}</div>
                         <div>{name}</div>
-                        <div>
+                        <div className="icon-group">
                           <PhoneIcon
                             className="flip icon"
                             onClick={() => {

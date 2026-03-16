@@ -24,7 +24,7 @@ export const Cover = () => {
         <img src={COVER_IMAGE} alt="sample" />
       </div>
       <div className="subtitle">We are getting married</div>
-      {/*<div className="info">{WEDDING_DATE.format(WEDDING_DATE_FORMAT)}</div>*/}
+      <div className="info">{WEDDING_DATE.format(WEDDING_DATE_FORMAT)}</div>
     </LazyDiv>
   )
 }

@@ -75,7 +75,7 @@ export const Invitation = () => {
               <>
                 <div className="contact-info">
                   {GROOM_INFO.filter(({ phone }) => !!phone).map(
-                    ({ relation, name, phone }) => (
+                    ({ relation, name, phone, account }) => (
                       <Fragment key={relation}>
                         <div className="relation">{relation}</div>
                         <div>{name}</div>
@@ -106,7 +106,7 @@ export const Invitation = () => {
                 </div>
                 <div className="contact-info">
                   {BRIDE_INFO.filter(({ phone }) => !!phone).map(
-                    ({ relation, name, phone }) => (
+                    ({ relation, name, phone, account }) => (
                       <Fragment key={relation}>
                         <div className="relation">{relation}</div>
                         <div>{name}</div>

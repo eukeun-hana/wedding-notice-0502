@@ -140,7 +140,7 @@ export const Invitation = () => {
         연락하기
       </Button>
       <div className="break" />
-      <Button
+       <Button
           style={{ width: "100%" }}
           onClick={() => {
             openModal({

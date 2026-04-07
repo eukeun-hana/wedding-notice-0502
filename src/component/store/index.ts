@@ -1,2 +1,2 @@
 export { StoreProvider } from "./provider"
-export { useKakao } from "./hook"
+export { useNaver, useKakao } from "./hook"

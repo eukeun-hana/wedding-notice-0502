@@ -27,6 +27,11 @@ function App() {
         </LazyDiv>
 
         <LazyDiv className="card-group">
+          {/* 오시는길 */}
+          <Location />
+         </LazyDiv>
+
+        <LazyDiv className="card-group">
           {/* 갤러리 */}
           <GalleryThum />
           {/* 방명록 */}

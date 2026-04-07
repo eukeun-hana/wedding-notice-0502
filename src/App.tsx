@@ -29,7 +29,7 @@ function App() {
         </LazyDiv>
         <LazyDiv className="card-group">
           {/* 오시는길 */}
-          <Location />
+          {/*<Location />*/}
         </LazyDiv>
 
         <LazyDiv className="card-group">

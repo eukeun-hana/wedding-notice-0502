@@ -16,9 +16,16 @@ import { Button } from "../button"
 import { LazyDiv } from "../lazyDiv"
 import PhoneIcon from "../../icons/phone-flip-icon.svg?react"
 import EnvelopeIcon from "../../icons/envelope-icon.svg?react"
+import CopyIcon from "../../icons/heart-icon.svg?react"
 
 export const Invitation = () => {
   const { openModal, closeModal } = useModal()
+
+  const copyAccount = (account: string) => {
+    navigator.clipboard.writeText(account)
+    alert(`계좌번호가 복사되었습니다.\n${account}`)
+  }
+  
   return (
     <LazyDiv className="card invitation">
       <h2 className="english">Notice</h2>
@@ -49,17 +56,17 @@ export const Invitation = () => {
         </span>{" "}
         {BRIDE_FULLNAME}
       </div>
-      
+
       <div className="break" />
-      
-      <Button
+
+       <Button
         onClick={() => {
           openModal({
             className: "contact-modal",
             closeOnClickBackground: true,
             header: (
               <div className="title-group">
-                <div className="title">축하 인사 전하기</div>
+                <div className="title">연락하기</div>
                 <div className="subtitle">
                   전화, 문자메세지로 축하 인사를 전해보세요.
                 </div>
@@ -91,6 +98,7 @@ export const Invitation = () => {
                     ),
                   )}
                 </div>
+
                 <div className="contact-info">
                   {BRIDE_INFO.filter(({ phone }) => !!phone).map(
                     ({ relation, name, phone }) => (
@@ -131,6 +139,87 @@ export const Invitation = () => {
       >
         연락하기
       </Button>
+      <div className="break" />
+       <Button
+          style={{ width: "100%" }}
+          onClick={() => {
+            openModal({
+              className: "donation-modal",
+              closeOnClickBackground: true,
+              header: <div className="title">마음 전하실 곳</div>,
+              content: (
+                <>
+                  {GROOM_INFO.filter(({ account }) => !!account).map(
+                    ({ relation, name, account }) => (
+                      <div className="account-info" key={relation}>
+                        <div>
+                          <div className="name">
+                            <span className="relation">{relation}</span> {name}
+                          </div>
+                          <div>{account}</div>
+                        </div>
+                        <Button
+                          className="copy-button"
+                          onClick={async () => {
+                            if (account) {
+                              try {
+                                navigator.clipboard.writeText(account)
+                                alert(account + "\n복사되었습니다.")
+                              } catch {
+                                alert("복사에 실패했습니다.")
+                              }
+                            }
+                          }}
+                        >
+                          복사하기
+                        </Button>
+                      </div>
+                    ),
+                  )}
+                  <div className="break" />
+                  {BRIDE_INFO.filter(({ account }) => !!account).map(
+                    ({ relation, name, account }) => (
+                      <div className="account-info" key={relation}>
+                        <div>
+                          <div className="name">
+                            <span className="relation">{relation}</span> {name}
+                          </div>
+                          <div>{account}</div>
+                        </div>
+                        <Button
+                          className="copy-button"
+                          onClick={async () => {
+                            if (account) {
+                              try {
+                                navigator.clipboard.writeText(account)
+                                alert(account + "\n복사되었습니다.")
+                              } catch {
+                                alert("복사에 실패했습니다.")
+                              }
+                            }
+                          }}
+                        >
+                          복사하기
+                        </Button>
+                      </div>
+                    ),
+                  )}
+                </>
+              ),
+              footer: (
+                <Button
+                  buttonStyle="style2"
+                  className="bg-light-grey-color text-dark-color"
+                  onClick={closeModal}
+                >
+                  닫기
+                </Button>
+              ),
+            })
+          }}
+        >
+          마음 전하실 곳
+        </Button>
       <div className="break" />
     </LazyDiv>
   )

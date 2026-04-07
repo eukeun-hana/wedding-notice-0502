@@ -6,6 +6,7 @@ import { GalleryThum } from "./component/galleryThumnail"
 import { LazyDiv } from "./component/lazyDiv"
 import GuestBook from "./component/guestbook"
 import { ShareButton } from "./component/shareButton"
+import { Location } from "./component/location"
 import { BGM } from "./component/bgm"
 import { useEffect } from "react"
 

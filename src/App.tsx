@@ -1,4 +1,5 @@
 import { Cover } from "./component/cover"
+import { Location } from "./component/location"
 import "./App.scss"
 import { Invitation } from "./component/invitation"
 import { BGEffect } from "./component/bgEffect"
@@ -6,9 +7,9 @@ import { GalleryThum } from "./component/galleryThumnail"
 import { LazyDiv } from "./component/lazyDiv"
 import GuestBook from "./component/guestbook"
 import { ShareButton } from "./component/shareButton"
-import { Location } from "./component/location"
 import { BGM } from "./component/bgm"
 import { useEffect } from "react"
+
 
 function App() {
   useEffect(() => {
@@ -26,11 +27,10 @@ function App() {
           {/* 모시는 글 */}
           <Invitation />
         </LazyDiv>
-
         <LazyDiv className="card-group">
           {/* 오시는길 */}
           <Location />
-         </LazyDiv>
+        </LazyDiv>
 
         <LazyDiv className="card-group">
           {/* 갤러리 */}
